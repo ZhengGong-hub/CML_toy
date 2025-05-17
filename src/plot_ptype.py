@@ -22,6 +22,41 @@ def set_style():
         'axes.spines.top': False,
         'axes.spines.right': False,
     })
+
+def add_statistical_annotations(ax, df, x_col, y_col, filter_condition=None):
+    """Add statistical annotations to boxplots
+    
+    Parameters:
+    -----------
+    ax : matplotlib.axes.Axes
+        The axes to add annotations to
+    df : pandas.DataFrame
+        The dataframe containing the data
+    x_col : str
+        The column name for the x-axis categories
+    y_col : str
+        The column name for the y-axis values
+    filter_condition : callable, optional
+        A function that takes a dataframe and returns a filtered dataframe
+    """
+    # Apply filter if provided
+    data = df if filter_condition is None else filter_condition(df)
+    
+    # Add statistical annotations for each category
+    for i, category in enumerate(sorted(data[x_col].unique())):
+        category_data = data[data[x_col] == category][y_col]
+        q1 = category_data.quantile(0.25)
+        median = category_data.median()
+        mean = category_data.mean()
+        q3 = category_data.quantile(0.75)
+        
+        # Position the text next to each boxplot
+        ax.text(i + 0.3, median, 
+                f'Q1: {q1:.1f}\nMean: {mean:.1f}\nMedian: {median:.1f}\nQ3: {q3:.1f}',
+                horizontalalignment='left', verticalalignment='center', 
+                size='small', color='black',
+                bbox=dict(facecolor='white', alpha=0.8, edgecolor='gray'))
+
 def plot_ptype_descriptive_statistics(df):
     """Create publication-quality plots for program type analysis
     """
@@ -29,6 +64,29 @@ def plot_ptype_descriptive_statistics(df):
     plot_sex_by_ptype(df)
     plot_age_by_ptype(df)
     plot_duration_by_ptype(df)
+    plot_ptype_frequency(df)
+    plot_ptype_past_income(df)
+
+def plot_ptype_frequency(df):
+    """Create a plot of the frequency of each program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+    # plot bar plot of ptype frequency
+    ptype_frequency = df['PTYPE'].value_counts()
+    sns.barplot(x=ptype_frequency.index, y=ptype_frequency.values, ax=ax1, width=0.5)
+    ax1.set_title('Frequency of Each Program Type')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Frequency')
+    
+    # Add count labels on the bars
+    for c in ax1.containers:
+        ax1.bar_label(c, fmt='%d', label_type='center')
+    
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/ptype_frequency.png', dpi=300, bbox_inches='tight')
+
 
 def plot_sex_by_ptype(df):
     """Create a plot of the sex distribution by program type"""
@@ -58,6 +116,7 @@ def plot_sex_by_ptype(df):
     # Adjust layout and save
     plt.tight_layout()
     plt.savefig('output_data/sex_by_ptype.png', dpi=300, bbox_inches='tight')
+
 def plot_age_by_ptype(df):
     """Create a plot of the age distribution by program type"""
     # Create a figure
@@ -70,22 +129,10 @@ def plot_age_by_ptype(df):
     # Set the title and labels
     ax1.set_title('Age Distribution by Program Type')
     ax1.set_xlabel('Program Type (PTYPE)')
-    ax1.set_ylabel('Age')
+    ax1.set_ylabel('Age (AGE)')
     
-    # Add statistical annotations for each program type
-    for i, ptype in enumerate(sorted(df['PTYPE'].unique())):
-        ptype_data = df[df['PTYPE'] == ptype]['AGE']
-        q1 = ptype_data.quantile(0.25)
-        median = ptype_data.median()
-        mean = ptype_data.mean()
-        q3 = ptype_data.quantile(0.75)
-        
-        # Position the text next to each boxplot
-        ax1.text(i + 0.3, median, 
-                f'Q1: {q1:.1f}\nMean: {mean:.1f}\nMedian: {median:.1f}\nQ3: {q3:.1f}',
-                horizontalalignment='left', verticalalignment='center', 
-                size='small', color='black',
-                bbox=dict(facecolor='white', alpha=0.8, edgecolor='gray'))
+    # Add statistical annotations
+    add_statistical_annotations(ax1, df, 'PTYPE', 'AGE')
 
     # Adjust layout and save
     plt.tight_layout()
@@ -106,23 +153,32 @@ def plot_duration_by_ptype(df):
     # Set the title and labels
     ax1.set_title('Duration Distribution by Program Type (excluding PTYPE 0)')
     ax1.set_xlabel('Program Type (PTYPE)')
-    ax1.set_ylabel('Duration')
+    ax1.set_ylabel('Duration (DURAT)')
 
-    # Add statistical annotations for each program type
-    for i, ptype in enumerate(sorted(filtered_df['PTYPE'].unique())):
-        ptype_data = filtered_df[filtered_df['PTYPE'] == ptype]['DURAT']
-        q1 = ptype_data.quantile(0.25)
-        median = ptype_data.median()
-        mean = ptype_data.mean()
-        q3 = ptype_data.quantile(0.75)
-        
-        # Position the text next to each boxplot
-        ax1.text(i + 0.3, median, 
-                f'Q1: {q1:.1f}\nMean: {mean:.1f}\nMedian: {median:.1f}\nQ3: {q3:.1f}',
-                horizontalalignment='left', verticalalignment='center', 
-                size='small', color='black',
-                bbox=dict(facecolor='white', alpha=0.8, edgecolor='gray'))
+    # Add statistical annotations
+    add_statistical_annotations(ax1, df, 'PTYPE', 'DURAT', 
+                               filter_condition=lambda df: df[df['PTYPE'] != 0])
 
     # Adjust layout and save
     plt.tight_layout()
     plt.savefig('output_data/duration_by_ptype.png', dpi=300, bbox_inches='tight')
+
+def plot_ptype_past_income(df):
+    """Create a plot of the past income distribution by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+    # plot boxplot of past income by ptype
+    sns.boxplot(x='PTYPE', y='EARN_X0', data=df, ax=ax1, width=0.5)
+
+    # Set the title and labels
+    ax1.set_title('Past Income Distribution by Program Type')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Past Income (EARN_X0)')
+
+    # Add statistical annotations
+    add_statistical_annotations(ax1, df, 'PTYPE', 'EARN_X0')
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/ptype_past_income.png', dpi=300, bbox_inches='tight')
