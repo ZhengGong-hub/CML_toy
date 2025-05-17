@@ -28,6 +28,7 @@ def plot_ptype_descriptive_statistics(df):
     set_style()
     plot_sex_by_ptype(df)
     plot_age_by_ptype(df)
+    plot_duration_by_ptype(df)
 
 def plot_sex_by_ptype(df):
     """Create a plot of the sex distribution by program type"""
@@ -89,3 +90,39 @@ def plot_age_by_ptype(df):
     # Adjust layout and save
     plt.tight_layout()
     plt.savefig('output_data/age_by_ptype.png', dpi=300, bbox_inches='tight')
+
+def plot_duration_by_ptype(df):
+    """Create a plot of the duration distribution by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # Filter out PTYPE 0 as we don't care about it
+    filtered_df = df[df['PTYPE'] != 0]
+
+    # plot boxplot of duration by ptype
+    sns.boxplot(x='PTYPE', y='DURAT', data=filtered_df, ax=ax1, width=0.5)
+
+    # Set the title and labels
+    ax1.set_title('Duration Distribution by Program Type (excluding PTYPE 0)')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Duration')
+
+    # Add statistical annotations for each program type
+    for i, ptype in enumerate(sorted(filtered_df['PTYPE'].unique())):
+        ptype_data = filtered_df[filtered_df['PTYPE'] == ptype]['DURAT']
+        q1 = ptype_data.quantile(0.25)
+        median = ptype_data.median()
+        mean = ptype_data.mean()
+        q3 = ptype_data.quantile(0.75)
+        
+        # Position the text next to each boxplot
+        ax1.text(i + 0.3, median, 
+                f'Q1: {q1:.1f}\nMean: {mean:.1f}\nMedian: {median:.1f}\nQ3: {q3:.1f}',
+                horizontalalignment='left', verticalalignment='center', 
+                size='small', color='black',
+                bbox=dict(facecolor='white', alpha=0.8, edgecolor='gray'))
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/duration_by_ptype.png', dpi=300, bbox_inches='tight')
