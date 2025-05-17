@@ -66,6 +66,12 @@ def plot_ptype_descriptive_statistics(df):
     plot_duration_by_ptype(df)
     plot_ptype_frequency(df)
     plot_ptype_past_income(df)
+    plot_ptype_school(df)
+    plot_ptype_vocational_degree(df)
+    plot_ptype_labour_market_prospects(df)
+    plot_ptype_nationality(df)
+    plot_ptype_unemployment_rate_last_occupation(df)
+    plot_ptype_region(df)
 
 def plot_ptype_frequency(df):
     """Create a plot of the frequency of each program type"""
@@ -182,3 +188,153 @@ def plot_ptype_past_income(df):
     # Adjust layout and save
     plt.tight_layout()
     plt.savefig('output_data/ptype_past_income.png', dpi=300, bbox_inches='tight')
+
+def plot_ptype_school(df):
+    """Create a plot of the school distribution by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # degree in years, 8: no degree
+    # bar plot of degree by ptype
+    degree_by_ptype = pd.crosstab(df['PTYPE'], df['SCHOOL'])
+    degree_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
+                        color=['#2ecc71', '#3498db', '#f39c12', '#e74c3c'])
+    ax1.set_title('Degree Distribution by Program Type (SCHOOL)')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Count')
+    
+    # Prevent x-axis labels from tilting
+    plt.setp(ax1.get_xticklabels(), rotation=0)
+
+    # Add count labels on the bars
+    for c in ax1.containers:
+        ax1.bar_label(c, fmt='%d', label_type='center')
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/ptype_school.png', dpi=300, bbox_inches='tight')
+
+def plot_ptype_vocational_degree(df):
+    """Create a plot of the vocational degree distribution by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # bar plot of vocational degree by ptype
+    vocational_degree_by_ptype = pd.crosstab(df['PTYPE'], df['VOC_DEG'])
+    vocational_degree_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
+                                   color=['#2ecc71', '#3498db', '#f39c12'])
+    ax1.set_title('Vocational Degree Distribution by Program Type (VOC_DEG)')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Count')
+
+    # Prevent x-axis labels from tilting
+    plt.setp(ax1.get_xticklabels(), rotation=0)
+
+    # Add count labels on the bars
+    for c in ax1.containers:
+        ax1.bar_label(c, fmt='%d', label_type='center') 
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/ptype_vocational_degree.png', dpi=300, bbox_inches='tight')
+
+def plot_ptype_labour_market_prospects(df):
+    """Create a plot of the labour market prospects distribution by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # bar plot of labour market prospects by ptype
+    labour_market_prospects_by_ptype = pd.crosstab(df['PTYPE'], df['LMP_CW'])
+    labour_market_prospects_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
+                                         color=['#2ecc71', '#3498db', '#f39c12', '#e74c3c'])
+    ax1.set_title('Labour Market Prospects Distribution by Program Type (LMP_CW)')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Count') 
+
+    # Prevent x-axis labels from tilting
+    plt.setp(ax1.get_xticklabels(), rotation=0)
+
+    # Add count labels on the bars
+    for c in ax1.containers:
+        ax1.bar_label(c, fmt='%d', label_type='center') 
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/ptype_labour_market_prospects.png', dpi=300, bbox_inches='tight')
+
+def plot_ptype_nationality(df):
+    """Create a plot of the nationality distribution by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # bar plot of nationality by ptype
+    nationality_by_ptype = pd.crosstab(df['PTYPE'], df['NATION'])
+    nationality_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
+                              color=['#2ecc71', '#3498db', '#f39c12', '#e74c3c', '#9b59b6'])
+    ax1.set_title('Nationality Distribution by Program Type (NATION)')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Count') 
+    ax1.legend(['1: Local', '2: Other European', '3: Asian', '4: African', '5: American'], 
+               title='Nationality')
+
+    # Prevent x-axis labels from tilting
+    plt.setp(ax1.get_xticklabels(), rotation=0)
+
+    # Add count labels on the bars
+    for c in ax1.containers:
+        ax1.bar_label(c, fmt='%d', label_type='center') 
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/ptype_nationality.png', dpi=300, bbox_inches='tight')
+
+def plot_ptype_unemployment_rate_last_occupation(df):
+    """Create a plot of the unemployment rate in the last occupation by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # box plot of unemployment rate in the last occupation by ptype
+    sns.boxplot(x='PTYPE', y='PROF_AL', data=df, ax=ax1, width=0.5)
+
+    # Set the title and labels
+    ax1.set_title('Unemployment Rate in the Last Occupation by Program Type (PROF_AL)')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Unemployment Rate in the Last Occupation (PROF_AL)')
+
+    # Add statistical annotations
+    add_statistical_annotations(ax1, df, 'PTYPE', 'PROF_AL')
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/ptype_unemployment_rate_last_occupation.png', dpi=300, bbox_inches='tight')
+
+def plot_ptype_region(df):
+    """Create a plot of the region distribution by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(20, 8))  # Wider figure to accommodate many regions
+    ax1 = fig.add_subplot(111)
+
+    # bar plot with region on x-axis and count of different ptypes
+    region_by_ptype = pd.crosstab(df['REGION'], df['PTYPE'])
+    region_by_ptype.plot(kind='bar', ax=ax1, stacked=True,
+                         color=['#2ecc71', '#3498db', '#f39c12'], width=0.9)
+    ax1.set_title('Program Type Distribution by Region')
+    ax1.set_xlabel('Region (REGION)')
+    ax1.set_ylabel('Count')
+    ax1.legend(title='Program Type (PTYPE)')
+
+    # Set x-axis labels to be vertical to accommodate many regions
+    plt.setp(ax1.get_xticklabels(), rotation=90)
+
+    # Add grid lines for better readability
+    ax1.grid(axis='y', linestyle='--', alpha=0.7)
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/ptype_region.png', dpi=300, bbox_inches='tight')
+

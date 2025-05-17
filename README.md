@@ -27,3 +27,6 @@ Without understanding the reasons for program cancellations, we could be introdu
 
 ### Check distribution after preprocess
 Analyze whether the remaining 30% of the data maintains similar distributions for critical variables compared to the original dataset. Significant deviations might indicate that the sample is no longer representative.
+
+### We do not account for heterogeneity of argriculture, production, service sector
+I do not know why we would care.
