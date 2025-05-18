@@ -1,6 +1,8 @@
 Initial sample size: 21768
 After removing employment programs: 16427
 After removing cancelled programs: 15400
-Final sample size after removing NaN values: 5620
+After removing NaN values: 5620
+After removing age not in 30-50: 5620
+After removing duplicates: 5620
 Total samples removed: 16148
 Percentage of samples retained: 25.82%

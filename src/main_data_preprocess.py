@@ -114,13 +114,23 @@ def preprocess_data(df):
     # drop NaN values 
     df_shallow = df_shallow.dropna()
     final_sample_size = len(df_shallow)
+
+    # STEP 4: drop all samples that have age not in 30-50 
+    df_shallow = df_shallow[df_shallow['AGE'].isin(range(30, 51))]
+    after_step4_size = len(df_shallow)
+
+    # STEP 5: drop duplicates 
+    df_shallow = df_shallow.drop_duplicates(subset=['PERS'])
+    after_step5_size = len(df_shallow)
     
     # Save sample size information to a text file
     with open("output_data/sample_sizes.txt", "w") as f:
         f.write(f"Initial sample size: {initial_sample_size}\n")
         f.write(f"After removing employment programs: {after_step1_size}\n")
         f.write(f"After removing cancelled programs: {after_step2_size}\n")
-        f.write(f"Final sample size after removing NaN values: {final_sample_size}\n")
+        f.write(f"After removing NaN values: {final_sample_size}\n")
+        f.write(f"After removing age not in 30-50: {after_step4_size}\n")
+        f.write(f"After removing duplicates: {after_step5_size}\n")
         f.write(f"Total samples removed: {initial_sample_size - final_sample_size}\n")
         f.write(f"Percentage of samples retained: {round((final_sample_size / initial_sample_size) * 100, 2)}%\n")
     print('Sample size information saved to output_data/sample_sizes.txt')
