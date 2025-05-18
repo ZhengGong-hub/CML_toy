@@ -30,3 +30,5 @@ Analyze whether the remaining 30% of the data maintains similar distributions fo
 
 ### We do not account for heterogeneity of argriculture, production, service sector
 I do not know why we would care.
+
+### for identification strategy, we need common support identified and drop the samples that P(D|X) too close to 0 or 1.
