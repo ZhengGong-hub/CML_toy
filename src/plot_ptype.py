@@ -72,6 +72,7 @@ def plot_ptype_descriptive_statistics(df):
     plot_ptype_nationality(df)
     plot_ptype_unemployment_rate_last_occupation(df)
     plot_ptype_region(df)
+    plot_region_service_sector_share(df)
 
 def plot_ptype_frequency(df):
     """Create a plot of the frequency of each program type"""
@@ -338,3 +339,19 @@ def plot_ptype_region(df):
     plt.tight_layout()
     plt.savefig('output_data/ptype_region.png', dpi=300, bbox_inches='tight')
 
+def plot_region_service_sector_share(df):
+    """Create a plot of the service sector share by region"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # bar plot of service sector share by region
+    service_sector_share_by_region = pd.crosstab(df['REGION'], df['REG_SER'])
+    service_sector_share_by_region.plot(kind='bar', ax=ax1, stacked=True, legend=False)
+    ax1.set_title('Service Sector Share by Region (REG_SER)')
+    ax1.set_xlabel('Region (REGION)')
+    ax1.set_ylabel('Service Sector Share (REG_SER)')    
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/region_service_sector_share.png', dpi=300, bbox_inches='tight')
