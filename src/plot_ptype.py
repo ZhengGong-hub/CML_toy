@@ -347,7 +347,7 @@ def plot_region_service_sector_share(df):
 
     # bar plot of service sector share by region
     service_sector_share_by_region = pd.crosstab(df['REGION'], df['REG_SER'])
-    service_sector_share_by_region.plot(kind='bar', ax=ax1, stacked=True, legend=False)
+    service_sector_share_by_region.plot(kind='bar', ax=ax1, stacked=True, legend=False, color='#3498db')
     ax1.set_title('Service Sector Share by Region (REG_SER)')
     ax1.set_xlabel('Region (REGION)')
     ax1.set_ylabel('Service Sector Share (REG_SER)')    
