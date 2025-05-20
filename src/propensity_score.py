@@ -34,9 +34,9 @@ def propensity_score(df):
     df_ps_2 = df.assign(propensity_score=ps_model.predict_proba(df[X])[:, 2])
     print(df_ps_0.head())
 
-    sns.distplot(df_ps_0["propensity_score"], kde=True, label="Non Treated")
-    sns.distplot(df_ps_1["propensity_score"], kde=True, label="Training Program 1")
-    sns.distplot(df_ps_2["propensity_score"], kde=True, label="Training Program 2")
+    sns.histplot(df_ps_0["propensity_score"], kde=True, label="Non Treated", bins=50)
+    sns.histplot(df_ps_1["propensity_score"], kde=True, label="Training Program 1", bins=50)
+    sns.histplot(df_ps_2["propensity_score"], kde=True, label="Training Program 2", bins=50)
 
     plt.title("Positivity Check")
     plt.legend();
