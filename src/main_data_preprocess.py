@@ -4,6 +4,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from sample_statistics import sample_statistics
 from plot_ptype import plot_ptype_descriptive_statistics
+from propensity_score import propensity_score
 
 def load_data(csv_path):
     """
@@ -171,6 +172,7 @@ def main():
     print(df_preprocessed.shape)
 
     sample_statistics(df_preprocessed)
+    propensity_score(df_preprocessed)
     plot_ptype_descriptive_statistics(df_preprocessed)
 
 if __name__ == "__main__":
