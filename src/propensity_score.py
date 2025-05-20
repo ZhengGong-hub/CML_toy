@@ -26,22 +26,70 @@ def propensity_score(df):
     df_x = df[X]
     df_t = df[T]
 
+    # variation 1: with subsample
     # Create a figure
-    ps_model = LogisticRegression(C=1e6).fit(df_x, df_t)
-
+    ps_model = LogisticRegression(multi_class='multinomial', solver='lbfgs').fit(df_x, df_t)
     df_ps_0 = df.assign(propensity_score=ps_model.predict_proba(df[X])[:, 0])
     df_ps_1 = df.assign(propensity_score=ps_model.predict_proba(df[X])[:, 1])
     df_ps_2 = df.assign(propensity_score=ps_model.predict_proba(df[X])[:, 2])
     print(df_ps_0.head())
 
-    sns.histplot(df_ps_0["propensity_score"], kde=True, label="Non Treated", bins=50)
-    sns.histplot(df_ps_1["propensity_score"], kde=True, label="Training Program 1", bins=50)
-    sns.histplot(df_ps_2["propensity_score"], kde=True, label="Training Program 2", bins=50)
+    # Create a figure with 3 subplots
+    fig, axes = plt.subplots(1, 3, figsize=(12, 6))
+    
+    # First subplot for propensity score 0
+    sns.histplot(df_ps_0.query("PTYPE == 0")["propensity_score"], kde=True, label="Subsample of Non Treated", bins=30, ax=axes[0])
+    sns.histplot(df_ps_0.query("PTYPE == 1")["propensity_score"], kde=True, label="Subsample of Training Program 1", bins=30, ax=axes[0])
+    sns.histplot(df_ps_0.query("PTYPE == 2")["propensity_score"], kde=True, label="Subsample of Training Program 2", bins=30, ax=axes[0])
+    axes[0].set_yscale('log')
+    axes[0].set_title('Propensity Score for Non Treated')
+    axes[0].legend()
+    
+    # Second subplot for propensity score 1
+    sns.histplot(df_ps_1.query("PTYPE == 0")["propensity_score"], kde=True, label="Subsample of Non Treated", bins=30, ax=axes[1])
+    sns.histplot(df_ps_1.query("PTYPE == 1")["propensity_score"], kde=True, label="Subsample of Training Program 1", bins=30, ax=axes[1])
+    sns.histplot(df_ps_1.query("PTYPE == 2")["propensity_score"], kde=True, label="Subsample of Training Program 2", bins=30, ax=axes[1])
+    axes[1].set_yscale('log')
+    axes[1].set_title('Propensity Score for Training Program 1')
+    axes[1].legend()
+    
+    # Third subplot for propensity score 2
+    sns.histplot(df_ps_2.query("PTYPE == 0")["propensity_score"], kde=True, label="Subsample of Non Treated", bins=30, ax=axes[2])
+    sns.histplot(df_ps_2.query("PTYPE == 1")["propensity_score"], kde=True, label="Subsample of Training Program 1", bins=30, ax=axes[2])
+    sns.histplot(df_ps_2.query("PTYPE == 2")["propensity_score"], kde=True, label="Subsample of Training Program 2", bins=30, ax=axes[2])
+    axes[2].set_yscale('log')
+    axes[2].set_title('Propensity Score for Training Program 2')
+    axes[2].legend()
 
-    plt.title("Positivity Check")
     plt.legend();
 
     # bar plot of service sector share by region
     # save 
     plt.tight_layout()
-    plt.savefig('output_data/propensity_score.png', dpi=300, bbox_inches='tight')
+    plt.savefig('output_data/propensity_score_subsample.png', dpi=300, bbox_inches='tight')
+
+    # variation 2: no subsample
+
+    # Create a figure with 3 subplots
+    fig, axes = plt.subplots(1, 3, figsize=(12, 6))
+    # First subplot for propensity score 0
+    sns.histplot(df_ps_0["propensity_score"], kde=True, bins=30, label="Whole Sample", ax=axes[0])
+    axes[0].set_title('Propensity Score for Non Treated')
+    axes[0].legend()
+    
+    # Second subplot for propensity score 1
+    sns.histplot(df_ps_1["propensity_score"], kde=True, bins=30, label="Whole Sample", ax=axes[1])
+    axes[1].set_title('Propensity Score for Training Program 1')
+    axes[1].legend()
+    
+    # Third subplot for propensity score 2
+    sns.histplot(df_ps_2["propensity_score"], kde=True, bins=30, label="Whole Sample", ax=axes[2])
+    axes[2].set_title('Propensity Score for Training Program 2')
+    axes[2].legend()
+
+    plt.legend();
+
+    # bar plot of service sector share by region
+    # save 
+    plt.tight_layout()
+    plt.savefig('output_data/propensity_score_whole_sample.png', dpi=300, bbox_inches='tight')
