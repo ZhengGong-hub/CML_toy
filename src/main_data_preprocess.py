@@ -121,7 +121,7 @@ def preprocess_data(df):
     after_step4_size = len(df_shallow)
 
     # STEP 5: drop duplicates 
-    df_shallow = df_shallow.drop_duplicates(subset=['PERS'])
+    df_shallow = df_shallow.drop_duplicates(subset=['PERS'], keep=False)
     after_step5_size = len(df_shallow)
     
     # Save sample size information to a text file
