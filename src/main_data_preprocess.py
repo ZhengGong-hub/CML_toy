@@ -165,6 +165,8 @@ def check_distribution(df1, df2, column_names):
 
 def main():
     df = load_data("CML_public/West.csv")
+    # print(df.columns.tolist())
+
     df_preprocessed = preprocess_data(df)
     check_distribution(df, df_preprocessed, ['AGE', 'SCHOOL', 'SEX'])
 

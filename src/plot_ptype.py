@@ -73,6 +73,8 @@ def plot_ptype_descriptive_statistics(df):
     plot_ptype_unemployment_rate_last_occupation(df)
     plot_ptype_region(df)
     plot_region_service_sector_share(df)
+    plot_num_month_unemployed_by_ptype(df)
+    plot_num_month_out_of_labour_force_by_ptype(df)
 
 def plot_ptype_frequency(df):
     """Create a plot of the frequency of each program type"""
@@ -198,7 +200,14 @@ def plot_ptype_school(df):
 
     # degree in years, 8: no degree
     # bar plot of degree by ptype
+    # Calculate counts by program type and school
     degree_by_ptype = pd.crosstab(df['PTYPE'], df['SCHOOL'])
+    
+    # Calculate percentages for each PTYPE
+    degree_by_ptype_pct = degree_by_ptype.div(
+        degree_by_ptype.sum(axis=1), axis=0) * 100
+    
+    # Plot the counts
     degree_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
                         color=['#2ecc71', '#3498db', '#f39c12', '#e74c3c'])
     ax1.set_title('Degree Distribution by Program Type (SCHOOL)')
@@ -208,9 +217,11 @@ def plot_ptype_school(df):
     # Prevent x-axis labels from tilting
     plt.setp(ax1.get_xticklabels(), rotation=0)
 
-    # Add count labels on the bars
-    for c in ax1.containers:
-        ax1.bar_label(c, fmt='%d', label_type='center')
+    # Add count and percentage labels on the bars
+    for i, c in enumerate(ax1.containers):
+        labels = [f'{degree_by_ptype_pct.iloc[j, i]:.1f}%' 
+                 for j, v in enumerate(c.datavalues)]
+        ax1.bar_label(c, labels=labels, label_type='center')
 
     # Adjust layout and save
     plt.tight_layout()
@@ -224,6 +235,11 @@ def plot_ptype_vocational_degree(df):
 
     # bar plot of vocational degree by ptype
     vocational_degree_by_ptype = pd.crosstab(df['PTYPE'], df['VOC_DEG'])
+    
+    # Calculate percentages for each PTYPE
+    vocational_degree_pct = vocational_degree_by_ptype.div(
+        vocational_degree_by_ptype.sum(axis=1), axis=0) * 100
+    
     vocational_degree_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
                                    color=['#2ecc71', '#3498db', '#f39c12'])
     ax1.set_title('Vocational Degree Distribution by Program Type (VOC_DEG)')
@@ -233,9 +249,14 @@ def plot_ptype_vocational_degree(df):
     # Prevent x-axis labels from tilting
     plt.setp(ax1.get_xticklabels(), rotation=0)
 
-    # Add count labels on the bars
-    for c in ax1.containers:
-        ax1.bar_label(c, fmt='%d', label_type='center') 
+    # Add percentage labels on the bars
+    for i, c in enumerate(ax1.containers):
+        # Get the percentages
+        percentages = vocational_degree_pct.iloc[:, i].values
+        
+        # Create labels with percentage
+        labels = [f'{pct:.1f}%' for pct in percentages]
+        ax1.bar_label(c, labels=labels, label_type='center')
 
     # Adjust layout and save
     plt.tight_layout()
@@ -249,6 +270,11 @@ def plot_ptype_labour_market_prospects(df):
 
     # bar plot of labour market prospects by ptype
     labour_market_prospects_by_ptype = pd.crosstab(df['PTYPE'], df['LMP_CW'])
+    
+    # Calculate percentages for each PTYPE
+    labour_market_prospects_pct = labour_market_prospects_by_ptype.div(
+        labour_market_prospects_by_ptype.sum(axis=1), axis=0) * 100
+    
     labour_market_prospects_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
                                          color=['#2ecc71', '#3498db', '#f39c12', '#e74c3c'])
     ax1.set_title('Labour Market Prospects Distribution by Program Type (LMP_CW)')
@@ -258,14 +284,18 @@ def plot_ptype_labour_market_prospects(df):
     # Prevent x-axis labels from tilting
     plt.setp(ax1.get_xticklabels(), rotation=0)
 
-    # Add count labels on the bars
-    for c in ax1.containers:
-        ax1.bar_label(c, fmt='%d', label_type='center') 
+    # Add count and percentage labels on the bars
+    for i, c in enumerate(ax1.containers):
+        # Get the percentages
+        percentages = labour_market_prospects_pct.iloc[:, i].values
+        
+        # Create labels with both count and percentage
+        labels = [f'{pct:.1f}%' for pct in percentages]
+        ax1.bar_label(c, labels=labels, label_type='center')
 
     # Adjust layout and save
     plt.tight_layout()
     plt.savefig('output_data/ptype_labour_market_prospects.png', dpi=300, bbox_inches='tight')
-
 def plot_ptype_nationality(df):
     """Create a plot of the nationality distribution by program type"""
     # Create a figure
@@ -274,6 +304,11 @@ def plot_ptype_nationality(df):
 
     # bar plot of nationality by ptype
     nationality_by_ptype = pd.crosstab(df['PTYPE'], df['NATION'])
+    
+    # Calculate percentages for each PTYPE
+    nationality_pct = nationality_by_ptype.div(
+        nationality_by_ptype.sum(axis=1), axis=0) * 100
+    
     nationality_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
                               color=['#2ecc71', '#3498db', '#f39c12', '#e74c3c', '#9b59b6'])
     ax1.set_title('Nationality Distribution by Program Type (NATION)')
@@ -285,9 +320,14 @@ def plot_ptype_nationality(df):
     # Prevent x-axis labels from tilting
     plt.setp(ax1.get_xticklabels(), rotation=0)
 
-    # Add count labels on the bars
-    for c in ax1.containers:
-        ax1.bar_label(c, fmt='%d', label_type='center') 
+    # Add count and percentage labels on the bars
+    for i, c in enumerate(ax1.containers):
+        # Get the percentages
+        percentages = nationality_pct.iloc[:, i].values
+        
+        # Create labels with percentage
+        labels = [f'{pct:.1f}%' for pct in percentages]
+        ax1.bar_label(c, labels=labels, label_type='center')
 
     # Adjust layout and save
     plt.tight_layout()
@@ -355,3 +395,39 @@ def plot_region_service_sector_share(df):
     # Adjust layout and save
     plt.tight_layout()
     plt.savefig('output_data/region_service_sector_share.png', dpi=300, bbox_inches='tight')
+
+def plot_num_month_unemployed_by_ptype(df):
+    """Create a plot of the number of months employed by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # box plot of num_month_employed by ptype
+    sns.boxplot(x='PTYPE', y='UNEM_X0', data=df, ax=ax1, width=0.5)
+
+    # Set the title and labels
+    ax1.set_title('Number of Months Employed by Program Type (UNEM_X0)')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Number of Months Employed (UNEM_X0)')
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/num_month_unemployed_by_ptype.png', dpi=300, bbox_inches='tight')
+
+def plot_num_month_out_of_labour_force_by_ptype(df):
+    """Create a plot of the number of months out of labour force by program type"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # box plot of num_month_out_of_labour_force by ptype
+    sns.boxplot(x='PTYPE', y='OLF_X0', data=df, ax=ax1, width=0.5)
+
+    # Set the title and labels
+    ax1.set_title('Number of Months Out of Labour Force by Program Type (OLF_X0)')
+    ax1.set_xlabel('Program Type (PTYPE)')
+    ax1.set_ylabel('Number of Months Out of Labour Force (OLF_X0)')
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/num_month_out_of_labour_force_by_ptype.png', dpi=300, bbox_inches='tight')
