@@ -17,6 +17,11 @@ def propensity_score(df):
     Args:
         df (pandas.DataFrame): Input dataframe containing treatment and covariate data
     """
+    # Exclude vocational degree 2 
+    #   for calculating propensity scores, and look for common support
+    #   (i.e. propensity scores and the distribution of the covariates should not be too different between treatment groups)
+    df = df.query("VOC_DEG != 2")
+
     # Calculate average quarterly earnings for years X1 and X2
     df['EARNX1'] = df[['EARNX1_1', 'EARNX1_2', 'EARNX1_3', 'EARNX1_4']].mean(axis=1)
     df['EARNX2'] = df[['EARNX2_1', 'EARNX2_2', 'EARNX2_3', 'EARNX2_4']].mean(axis=1)
