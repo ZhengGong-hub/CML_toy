@@ -107,6 +107,8 @@ def preprocess_data(df):
     # Calculate percentage of NaN values in each column
     nan_percentage = round((columns_with_nans / len(df_shallow)) * 100, 2)
     # Save NaN percentage information to a text file
+    
+    os.makedirs("output_data", exist_ok=True)
     with open("output_data/nan_percentage.txt", "w") as f:
         for col, value in nan_percentage.items():
             f.write(f"{col:<12} {value}%\n")
