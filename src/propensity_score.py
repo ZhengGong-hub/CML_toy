@@ -30,7 +30,6 @@ def propensity_score(df):
         'EMPLX1_1', 'EMPLX1_2', 'EMPLX1_3', 'EMPLX1_4', 
         'EMPLX2_1', 'EMPLX2_2', 'EMPLX2_3', 'EMPLX2_4', 
         'EARNX1', 'EARNX2', 
-        'SHP_CW_1', 'SHP_CW_2', 'SHP_CW_3', 'SHP_CW_4',
         'LMP_CW', 'PROF_XL'
     ]
     
