@@ -104,6 +104,11 @@ def plot_sex_by_ptype(df):
     ax1 = fig.add_subplot(111)
     # 1. Gender Distribution by Program Type
     gender_by_ptype = pd.crosstab(df['PTYPE'], df['SEX'])
+    
+    # Calculate percentages for each PTYPE
+    gender_pct = gender_by_ptype.div(
+        gender_by_ptype.sum(axis=1), axis=0) * 100
+    
     gender_by_ptype.plot(kind='bar', stacked=True, ax=ax1, 
                         color=['#2ecc71', '#e74c3c'])
     ax1.set_title('Sex Distribution by Program Type', pad=20)
@@ -111,9 +116,14 @@ def plot_sex_by_ptype(df):
     ax1.set_ylabel('Count')
     ax1.legend(['1.0', '2.0'], title='Sex')
     
-    # Add count labels on the bars
-    for c in ax1.containers:
-        ax1.bar_label(c, fmt='%d', label_type='center')
+    # Add percentage labels on the bars
+    for i, c in enumerate(ax1.containers):
+        # Get the percentages
+        percentages = gender_pct.iloc[:, i].values
+        
+        # Create labels with percentage
+        labels = [f'{pct:.1f}%' for pct in percentages]
+        ax1.bar_label(c, labels=labels, label_type='center')
     
     # Add sample sizes as text
     for i, ptype in enumerate(df['PTYPE'].unique()):
@@ -296,6 +306,7 @@ def plot_ptype_labour_market_prospects(df):
     # Adjust layout and save
     plt.tight_layout()
     plt.savefig('output_data/ptype_labour_market_prospects.png', dpi=300, bbox_inches='tight')
+    
 def plot_ptype_nationality(df):
     """Create a plot of the nationality distribution by program type"""
     # Create a figure
