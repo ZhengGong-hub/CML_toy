@@ -7,9 +7,8 @@ NATION       1.01%
 REGION       0.91%
 REG_AL       0.91%
 REG_PRG      0.95%
-REG_SER      1.05%
-REG_PRO      0.92%
-REG_AGRI     1.02%
+REG_PRO      0.02%
+REG_AGRI     0.01%
 SECT_AL      0.95%
 PROF_AL      0.94%
 SPECIA_CW    1.05%

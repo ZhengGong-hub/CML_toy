@@ -89,6 +89,14 @@ def preprocess_data(df):
     df_shallow['EARNX1'] = df_shallow[['EARNX1_1', 'EARNX1_2', 'EARNX1_3', 'EARNX1_4']].mean(axis=1)
     df_shallow['EARNX2'] = df_shallow[['EARNX2_1', 'EARNX2_2', 'EARNX2_3', 'EARNX2_4']].mean(axis=1)
 
+    # STEP 0: impute We recognized that we excluded missing observations for the following three variables REG_SER, REG_PRO, and REG_AGRL. However these variables sum up to one and are equal for each region. Instead would you could try, if possible, to just infer the missing values from persons in the same region
+    # if the missing value is in REG_SER, use the 1 - REG_PRG - REG_AGRI
+    # if the missing value is in REG_PRO, use the 1 - REG_PRG - REG_AGRI
+    # if the missing value is in REG_AGRI, use the 1 - REG_PRG - REG_SER
+    df_shallow['REG_SER'] = df_shallow['REG_SER'].fillna(1 - df_shallow['REG_PRG'] - df_shallow['REG_AGRI'])
+    df_shallow['REG_PRO'] = df_shallow['REG_PRO'].fillna(1 - df_shallow['REG_PRG'] - df_shallow['REG_AGRI'])
+    df_shallow['REG_AGRI'] = df_shallow['REG_AGRI'].fillna(1 - df_shallow['REG_PRG'] - df_shallow['REG_SER'])
+
     # STEP 1: drop all the samples that are assigned to a employment program
     # we are only interested in the effect of training program on the outcome
     # so we drop all the columns that are related to employement program, i.e. PTYPE=3 and PTYPE=4
