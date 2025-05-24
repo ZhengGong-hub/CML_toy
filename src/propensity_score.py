@@ -2,7 +2,7 @@ from sklearn.linear_model import LogisticRegression
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
-
+import json
 def propensity_score(df):
     """
     Calculate propensity scores for each treatment type and visualize their distributions.
@@ -22,23 +22,13 @@ def propensity_score(df):
     #   (i.e. propensity scores and the distribution of the covariates should not be too different between treatment groups)
     df = df.query("VOC_DEG != 2")
 
-    # Calculate average quarterly earnings for years X1 and X2
-    df['EARNX1'] = df[['EARNX1_1', 'EARNX1_2', 'EARNX1_3', 'EARNX1_4']].mean(axis=1)
-    df['EARNX2'] = df[['EARNX2_1', 'EARNX2_2', 'EARNX2_3', 'EARNX2_4']].mean(axis=1)
+    # import parameter json
+    with open('src/parameter.json', 'r') as f:
+        parameter = json.load(f)
     
     # Define features for propensity score model
-    X = [
-        'AGE', 'SEX', 'SCHOOL', 'VOC_DEG', 'NATION', 'REGION', 
-        'REG_AL', 'REG_SER', 'REG_PRO', 'REG_AGRI',
-        'SECT_AL', 'PROF_AL',
-        'UNEM_X0', 'OLF_X0', 'EMPL_X0', 'EARN_X0', 
-        'EMPLX1_1', 'EMPLX1_2', 'EMPLX1_3', 'EMPLX1_4', 
-        'EMPLX2_1', 'EMPLX2_2', 'EMPLX2_3', 'EMPLX2_4', 
-        'EARNX1', 'EARNX2', 
-        'LMP_CW', 
-    ]
-    
-    T = ['PTYPE']
+    X = parameter['covariates']
+    T = parameter['treatment']
     
     df_x = df[X]
     df_t = df[T]

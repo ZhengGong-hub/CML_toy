@@ -3,9 +3,10 @@ import requests
 import pandas as pd
 from dotenv import load_dotenv
 from sample_statistics import sample_statistics
-from plot_ptype import plot_ptype_descriptive_statistics
+from plot_ptype import plot_ptype
 from propensity_score import propensity_score
-
+from plot_by_region import plot_by_region
+from plot_by_nan import plot_by_nan
 def load_data(csv_path):
     """
     columns:
@@ -83,7 +84,11 @@ def preprocess_data(df):
 
     # Record initial sample size
     initial_sample_size = len(df_shallow)
-    
+
+    # STEP 0: calculate the average quarterly earnings for years X1 and X2
+    df_shallow['EARNX1'] = df_shallow[['EARNX1_1', 'EARNX1_2', 'EARNX1_3', 'EARNX1_4']].mean(axis=1)
+    df_shallow['EARNX2'] = df_shallow[['EARNX2_1', 'EARNX2_2', 'EARNX2_3', 'EARNX2_4']].mean(axis=1)
+
     # STEP 1: drop all the samples that are assigned to a employment program
     # we are only interested in the effect of training program on the outcome
     # so we drop all the columns that are related to employement program, i.e. PTYPE=3 and PTYPE=4
@@ -115,6 +120,8 @@ def preprocess_data(df):
     print('NaN percentage information saved to output_data/nan_percentage.txt')
     
     # drop NaN values 
+    plot_by_nan(df_shallow)
+
     df_shallow = df_shallow.dropna()
     final_sample_size = len(df_shallow)
 
@@ -177,7 +184,8 @@ def main():
 
     sample_statistics(df_preprocessed)
     propensity_score(df_preprocessed)
-    plot_ptype_descriptive_statistics(df_preprocessed)
+    plot_ptype(df_preprocessed)
+    plot_by_region(df_preprocessed)
 
 if __name__ == "__main__":
     main() 
