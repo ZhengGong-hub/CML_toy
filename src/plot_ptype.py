@@ -75,6 +75,7 @@ def plot_ptype_descriptive_statistics(df):
     plot_region_service_sector_share(df)
     plot_num_month_unemployed_by_ptype(df)
     plot_num_month_out_of_labour_force_by_ptype(df)
+    plot_region_unemployment_rate(df)
 
 def plot_ptype_frequency(df):
     """Create a plot of the frequency of each program type"""
@@ -464,3 +465,24 @@ def plot_num_month_out_of_labour_force_by_ptype(df):
     # Adjust layout and save
     plt.tight_layout()
     plt.savefig('output_data/num_month_out_of_labour_force_by_ptype.png', dpi=300, bbox_inches='tight')
+
+def plot_region_unemployment_rate(df):
+    """Create a plot of the unemployment rate by region"""
+    # Create a figure
+    fig = plt.figure(figsize=(15, 6))
+    ax1 = fig.add_subplot(111)
+
+    # bar plot of unemployment rate by region
+    sns.barplot(x='REGION', y='REG_AL', data=df, ax=ax1, width=0.5)
+
+    # xaxis rotation 90 degrees
+    plt.xticks(rotation=90)
+
+    # Set the title and labels
+    ax1.set_title('Unemployment Rate by Region (REG_AL)')
+    ax1.set_xlabel('Region (REGION)')
+    ax1.set_ylabel('Unemployment Rate (REG_AL)')
+
+    # Adjust layout and save
+    plt.tight_layout()
+    plt.savefig('output_data/region_unemployment_rate.png', dpi=300, bbox_inches='tight')

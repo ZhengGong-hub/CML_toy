@@ -29,13 +29,13 @@ def propensity_score(df):
     # Define features for propensity score model
     X = [
         'AGE', 'SEX', 'SCHOOL', 'VOC_DEG', 'NATION', 'REGION', 
-        'REG_AL', 'REG_PRG', 'REG_SER', 'REG_PRO', 'REG_AGRI',
-        'SECT_AL', 'PROF_AL', 'PROF_XL',
+        'REG_AL', 'REG_SER', 'REG_PRO', 'REG_AGRI',
+        'SECT_AL', 'PROF_AL',
         'UNEM_X0', 'OLF_X0', 'EMPL_X0', 'EARN_X0', 
         'EMPLX1_1', 'EMPLX1_2', 'EMPLX1_3', 'EMPLX1_4', 
         'EMPLX2_1', 'EMPLX2_2', 'EMPLX2_3', 'EMPLX2_4', 
         'EARNX1', 'EARNX2', 
-        'LMP_CW', 'PROF_XL'
+        'LMP_CW', 
     ]
     
     T = ['PTYPE']
