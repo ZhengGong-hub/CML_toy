@@ -1,4 +1,4 @@
 Distribution comparison, df1 is raw data, df2 is preprocessed data:
-AGE: df1_mean=40.0064, df2_mean=40.1888, mean_diff_pct=0.46%, df1_std=6.0340, df2_std=6.0133, std_diff_pct=0.34%
-SCHOOL: df1_mean=10.2060, df2_mean=10.4398, mean_diff_pct=2.29%, df1_std=1.3278, df2_std=1.3408, std_diff_pct=0.98%
+AGE: df1_mean=40.0064, df2_mean=40.1912, mean_diff_pct=0.46%, df1_std=6.0340, df2_std=6.0126, std_diff_pct=0.36%
+SCHOOL: df1_mean=10.2060, df2_mean=10.4396, mean_diff_pct=2.29%, df1_std=1.3278, df2_std=1.3409, std_diff_pct=0.99%
 SEX: df1_mean=1.6025, df2_mean=1.5839, mean_diff_pct=1.16%, df1_std=0.4894, df2_std=0.4930, std_diff_pct=0.73%
