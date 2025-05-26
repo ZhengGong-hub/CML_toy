@@ -7,6 +7,8 @@ from plot_ptype import plot_ptype
 from propensity_score import propensity_score
 from plot_by_region import plot_by_region
 from plot_by_nan import plot_by_nan
+from treatment_effect import run_treatment_effect_analysis
+
 def load_data(csv_path):
     """
     columns:
@@ -202,6 +204,7 @@ def main():
     propensity_score(df_preprocessed)
     plot_ptype(df_preprocessed)
     plot_by_region(df_preprocessed)
+    run_treatment_effect_analysis(df_preprocessed)
 
 if __name__ == "__main__":
     main() 
