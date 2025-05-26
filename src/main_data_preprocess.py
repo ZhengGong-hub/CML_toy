@@ -163,6 +163,11 @@ def preprocess_data(df):
         f.write(f"Percentage of samples retained: {round((final_sample_size / initial_sample_size) * 100, 2)}%\n")
     print('Sample size information saved to output_data/sample_sizes.txt')
 
+    # STEP 6: 
+    # Exclude vocational degree 2 
+    #   for calculating propensity scores, and look for common support
+    #   (i.e. propensity scores and the distribution of the covariates should not be too different between treatment groups)
+    df_shallow = df_shallow.query("VOC_DEG != 2")
     return df_shallow
 
 def check_distribution(df1, df2, column_names):

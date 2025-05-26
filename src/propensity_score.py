@@ -17,17 +17,13 @@ def propensity_score(df):
     Args:
         df (pandas.DataFrame): Input dataframe containing treatment and covariate data
     """
-    # Exclude vocational degree 2 
-    #   for calculating propensity scores, and look for common support
-    #   (i.e. propensity scores and the distribution of the covariates should not be too different between treatment groups)
-    df = df.query("VOC_DEG != 2")
 
     # import parameter json
     with open('src/parameter.json', 'r') as f:
         parameter = json.load(f)
     
     # Define features for propensity score model
-    X = parameter['covariates']
+    X = parameter['ord_covariates'] + parameter['unord_covariates']
     T = parameter['treatment']
     
     df_x = df[X]

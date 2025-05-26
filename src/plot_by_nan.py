@@ -15,7 +15,7 @@ def plot_by_nan(df):
     # covariates
     with open('src/parameter.json', 'r') as f:
         parameter = json.load(f)
-    X = parameter['covariates']
+    X = parameter['ord_covariates'] + parameter['unord_covariates']
 
     # Create a table showing statistics for each covariate
     with open("output_data/nan_statistics.txt", "w") as f:
