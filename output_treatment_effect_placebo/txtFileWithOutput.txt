@@ -54,7 +54,7 @@ d_type:  discrete
 iate_eff:  False
 mp_parallel:  10
 mp_automatic:  True
-sys_share:  0.5285
+sys_share:  0.5327
 outpath:  output_treatment_effect_placebo
 outfiletext:  output_treatment_effect_placebo/txtFileWithOutput.txt
 outfilesummary:  output_treatment_effect_placebo/txtFileWithOutput_Summary.txt
@@ -406,12 +406,12 @@ Data columns (total 114 columns):
  106  sal_8         2288 non-null   float64
  107  sal_9         2288 non-null   float64
  108  sal_avg       2288 non-null   float64
- 109  empl_ttl      2288 non-null   float64
+ 109  empl_ttl      2288 non-null   int64  
  110  empl_chge     2288 non-null   int64  
  111  nation_prime  2288 non-null   float64
  112  region_prime  2288 non-null   float64
  113  id_mcf        2288 non-null   int64  
-dtypes: float64(112), int64(2)
+dtypes: float64(111), int64(3)
 memory usage: 2.0 MB
 
                count          mean           std          min           25%           50%           75%            max
@@ -524,7 +524,7 @@ sal_7         2288.0  40536.342954  24209.991611     0.000000  25403.102306  419
 sal_8         2288.0  44637.423404  24440.006770     0.000000  29516.359511  45526.617773  61466.353737  114563.505547
 sal_9         2288.0  49530.895401  24089.728152     0.000000  33660.237901  49288.583494  65206.674397  121455.328919
 sal_avg       2288.0  34637.027452  18166.523886     0.000000  22374.730919  34707.711958  47175.675019   87559.490193
-empl_ttl      2288.0     43.441871      8.055401    29.000000     37.000000     42.000000     50.000000      80.000000
+empl_ttl      2288.0     14.502622      7.048771     0.000000      9.000000     16.000000     20.000000      27.000000
 empl_chge     2288.0      3.305507      2.305433     0.000000      1.000000      3.000000      5.000000      15.000000
 nation_prime  2288.0      2.947990      2.127630     2.000000      2.000000      2.000000      3.000000      11.000000
 region_prime  2288.0    196.838287    131.422160     2.000000     79.000000    181.000000    307.000000     439.000000
@@ -702,32 +702,32 @@ Computing random forest based common support
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support before CV
-RAM total: 49152.0 MB,  used: 15786.39 MB, available: 12062.98 MB, free:  80.56 MB
+RAM total: 49152.0 MB,  used: 15527.73 MB, available: 11783.67 MB, free:  57.31 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 15831.48 MB, available: 12018.69 MB, free:  63.92 MB
+RAM total: 49152.0 MB,  used: 15530.08 MB, available: 11784.86 MB, free:  58.28 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 15826.34 MB, available: 12024.33 MB, free:  69.33 MB
+RAM total: 49152.0 MB,  used: 15666.62 MB, available: 11676.73 MB, free:  65.53 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 15762.31 MB, available: 12087.67 MB, free:  68.84 MB
+RAM total: 49152.0 MB,  used: 15554.31 MB, available: 11786.64 MB, free:  64.41 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 15787.08 MB, available: 12065.05 MB, free:  63.97 MB
+RAM total: 49152.0 MB,  used: 15532.2 MB, available: 11803.83 MB, free:  60.69 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 15836.78 MB, available: 12017.12 MB, free:  56.97 MB
+RAM total: 49152.0 MB,  used: 15482.62 MB, available: 11858.42 MB, free:  62.23 MB
 
 Score based on all features:  0.462 
           score_w/o_x_d  rel_diff_d_%
@@ -1265,37 +1265,37 @@ Local centering is done by cross-validation
 
 ----------------------------------------------------------------------------------------------------
 Local centering: Prior to estimation
-RAM total: 49152.0 MB,  used: 15830.94 MB, available: 12024.06 MB, free:  62.59 MB
+RAM total: 49152.0 MB,  used: 15599.81 MB, available: 11766.14 MB, free:  69.44 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: After best_regression
-RAM total: 49152.0 MB,  used: 15830.94 MB, available: 12024.06 MB, free:  62.59 MB
+RAM total: 49152.0 MB,  used: 15599.92 MB, available: 11766.14 MB, free:  69.44 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 15829.81 MB, available: 12025.28 MB, free:  61.36 MB
+RAM total: 49152.0 MB,  used: 15587.58 MB, available: 11778.77 MB, free:  63.61 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 15855.59 MB, available: 12030.47 MB, free:   58.5 MB
+RAM total: 49152.0 MB,  used: 15569.36 MB, available: 11826.38 MB, free:  60.59 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 15791.97 MB, available: 12102.39 MB, free:  53.58 MB
+RAM total: 49152.0 MB,  used: 15556.91 MB, available: 11849.64 MB, free:   62.5 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 15770.64 MB, available: 12096.34 MB, free:  58.03 MB
+RAM total: 49152.0 MB,  used: 15556.56 MB, available: 11840.67 MB, free:   54.7 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 15787.09 MB, available: 12028.05 MB, free:   62.5 MB
+RAM total: 49152.0 MB,  used: 15561.7 MB, available: 11872.94 MB, free:   64.0 MB
 
 
 ----------------------------------------------------------------------------------------------------
@@ -1330,7 +1330,7 @@ New variable to build trees in RF:  earn_x0_lc
 
 ----------------------------------------------------------------------------------------------------
 Local centering: End of function.
-RAM total: 49152.0 MB,  used: 15791.66 MB, available: 12020.61 MB, free:  55.16 MB
+RAM total: 49152.0 MB,  used: 15561.7 MB, available: 11872.94 MB, free:   64.0 MB
 
 
 ====================================================================================================
@@ -1452,7 +1452,7 @@ Features used to build forest:          age sex school voc_deg reg_al reg_ser re
 Variables always included in splitting: 
 Number of replications:     1000
 Splitting rule used:        MSE+MCE criterion
-Penalty used in splitting:  430495.3216925629 Penalty method: MSE of treatment prediction 
+Penalty used in splitting:  430495.321692563 Penalty method: MSE of treatment prediction 
 Share of data in subsample for forest building: 0.67
 Share of data in subsample for forest evaluation: 1   
 Total number of variables available for splitting: 27  
@@ -1479,20 +1479,20 @@ Size of forest: 32.71 MB
 
 ----------------------------------------------------------------------------------------------------
 Forest Building: End of forests loop.
-RAM total: 49152.0 MB,  used: 15968.25 MB, available: 12103.73 MB, free:  62.64 MB
+RAM total: 49152.0 MB,  used: 15712.25 MB, available: 12016.56 MB, free:  57.36 MB
 
 
 ----------------------------------------------------------------------------------------------------
-Training executed at: 2025-05-27 12:21:40.588541
+Training executed at: 2025-05-27 14:01:39.740797
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats I:                    0:00:00.102358
-Feature preselection:                            0:00:00.006442
-Common support:                                  0:00:05.977700
-Local centering (recoding of Y):                 0:00:03.127500
-Training the causal forest:                      0:04:03.166409
+Data preparation and stats I:                    0:00:00.100429
+Feature preselection:                            0:00:00.006327
+Common support:                                  0:00:05.941066
+Local centering (recoding of Y):                 0:00:03.138700
+Training the causal forest:                      0:04:03.473720
   ... of which is time for variable importance:  0:00:00
 
-Total time training:                             0:04:12.380409
+Total time training:                             0:04:12.660242
 
 ====================================================================================================
 Modified Causal Forest: Prediction
@@ -1548,7 +1548,7 @@ d_type:  discrete
 iate_eff:  False
 mp_parallel:  10
 mp_automatic:  True
-sys_share:  0.5285
+sys_share:  0.5327
 outpath:  output_treatment_effect_placebo
 outfiletext:  output_treatment_effect_placebo/txtFileWithOutput.txt
 outfilesummary:  output_treatment_effect_placebo/txtFileWithOutput_Summary.txt
@@ -2549,19 +2549,19 @@ Local centering is done by cross-validation
 
 ----------------------------------------------------------------------------------------------------
 Local centering: Prior to estimation
-RAM total: 49152.0 MB,  used: 16057.41 MB, available: 12050.33 MB, free:  57.27 MB
+RAM total: 49152.0 MB,  used: 15714.14 MB, available: 12064.2 MB, free:  55.14 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering: End of function.
-RAM total: 49152.0 MB,  used: 16058.47 MB, available: 12053.11 MB, free:   59.2 MB
+RAM total: 49152.0 MB,  used: 15739.3 MB, available: 12110.34 MB, free:  62.53 MB
 
 Number of parallel processes: 1
  Size of weight matrix:  15.40 MB
 
 ----------------------------------------------------------------------------------------------------
 Prediction: End of weights estimation
-RAM total: 49152.0 MB,  used: 15885.31 MB, available: 12228.69 MB, free: 183.64 MB
+RAM total: 49152.0 MB,  used: 15725.11 MB, available: 12248.97 MB, free: 169.05 MB
 
 
 
@@ -3113,34 +3113,34 @@ earn_x0_lc1_un_lc_pot   2269.0  3592.794887  1172.050838  1355.743857  2636.0016
 earn_x0_lc2_un_lc_pot   2269.0  3612.171630  1161.602100  1442.122806  2651.503533  3596.370021  4511.182494  6476.879064
 
 ----------------------------------------------------------------------------------------------------
-Training executed at: 2025-05-27 12:21:40.588541
+Training executed at: 2025-05-27 14:01:39.740797
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats I:                    0:00:00.102358
-Feature preselection:                            0:00:00.006442
-Common support:                                  0:00:05.977700
-Local centering (recoding of Y):                 0:00:03.127500
-Training the causal forest:                      0:04:03.166409
+Data preparation and stats I:                    0:00:00.100429
+Feature preselection:                            0:00:00.006327
+Common support:                                  0:00:05.941066
+Local centering (recoding of Y):                 0:00:03.138700
+Training the causal forest:                      0:04:03.473720
   ... of which is time for variable importance:  0:00:00
 
-Total time training:                             0:04:12.380409
+Total time training:                             0:04:12.660242
 
 
 ----------------------------------------------------------------------------------------------------
-Prediction executed at: 2025-05-27 12:23:15.440891
+Prediction executed at: 2025-05-27 14:03:13.595936
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats II:                   0:00:00.053246
-Common support:                                  0:00:00.399807
-Local centering (recoding of Y):                 0:00:00.361927
-Weights:                                         0:01:27.280652
-ATEs:                                            0:00:00.495929
-GATEs:                                           0:00:04.516600
-BGATEs:                                          0:00:00
-CBGATEs:                                         0:00:00.000001
-QIATEs:                                          0:00:00.000001
-IATEs:                                           0:00:01.743549
-Balancing test:                                  0:00:00.000002
+Data preparation and stats II:                   0:00:00.053392
+Common support:                                  0:00:00.401528
+Local centering (recoding of Y):                 0:00:00.337829
+Weights:                                         0:01:26.248812
+ATEs:                                            0:00:00.496574
+GATEs:                                           0:00:04.587260
+BGATEs:                                          0:00:00.000001
+CBGATEs:                                         0:00:00
+QIATEs:                                          0:00:00.000002
+IATEs:                                           0:00:01.728994
+Balancing test:                                  0:00:00.000001
 
-Total time prediction:                           0:01:34.852071
+Total time prediction:                           0:01:33.854808
 
 
 ====================================================================================================

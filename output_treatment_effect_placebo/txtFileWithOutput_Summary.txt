@@ -158,7 +158,7 @@ Features used to build forest:          age sex school voc_deg reg_al reg_ser re
 Variables always included in splitting: 
 Number of replications:     1000
 Splitting rule used:        MSE+MCE criterion
-Penalty used in splitting:  430495.3216925629 Penalty method: MSE of treatment prediction 
+Penalty used in splitting:  430495.321692563 Penalty method: MSE of treatment prediction 
 Share of data in subsample for forest building: 0.67
 Share of data in subsample for forest evaluation: 1   
 Total number of variables available for splitting: 27  
@@ -184,16 +184,16 @@ Size of forest: 32.71 MB
 ----------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------
-Training executed at: 2025-05-27 12:21:40.588541
+Training executed at: 2025-05-27 14:01:39.740797
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats I:                    0:00:00.102358
-Feature preselection:                            0:00:00.006442
-Common support:                                  0:00:05.977700
-Local centering (recoding of Y):                 0:00:03.127500
-Training the causal forest:                      0:04:03.166409
+Data preparation and stats I:                    0:00:00.100429
+Feature preselection:                            0:00:00.006327
+Common support:                                  0:00:05.941066
+Local centering (recoding of Y):                 0:00:03.138700
+Training the causal forest:                      0:04:03.473720
   ... of which is time for variable importance:  0:00:00
 
-Total time training:                             0:04:12.380409
+Total time training:                             0:04:12.660242
 
 ====================================================================================================
 Modified Causal Forest: Prediction
@@ -660,21 +660,21 @@ earn_x0_lc1_un_lc_pot   2269.0  3592.794887  1172.050838  1355.743857  2636.0016
 earn_x0_lc2_un_lc_pot   2269.0  3612.171630  1161.602100  1442.122806  2651.503533  3596.370021  4511.182494  6476.879064
 
 ----------------------------------------------------------------------------------------------------
-Prediction executed at: 2025-05-27 12:23:15.440891
+Prediction executed at: 2025-05-27 14:03:13.595936
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats II:                   0:00:00.053246
-Common support:                                  0:00:00.399807
-Local centering (recoding of Y):                 0:00:00.361927
-Weights:                                         0:01:27.280652
-ATEs:                                            0:00:00.495929
-GATEs:                                           0:00:04.516600
-BGATEs:                                          0:00:00
-CBGATEs:                                         0:00:00.000001
-QIATEs:                                          0:00:00.000001
-IATEs:                                           0:00:01.743549
-Balancing test:                                  0:00:00.000002
+Data preparation and stats II:                   0:00:00.053392
+Common support:                                  0:00:00.401528
+Local centering (recoding of Y):                 0:00:00.337829
+Weights:                                         0:01:26.248812
+ATEs:                                            0:00:00.496574
+GATEs:                                           0:00:04.587260
+BGATEs:                                          0:00:00.000001
+CBGATEs:                                         0:00:00
+QIATEs:                                          0:00:00.000002
+IATEs:                                           0:00:01.728994
+Balancing test:                                  0:00:00.000001
 
-Total time prediction:                           0:01:34.852071
+Total time prediction:                           0:01:33.854808
 
 
 ====================================================================================================

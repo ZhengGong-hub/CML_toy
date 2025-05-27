@@ -4,5 +4,6 @@ After removing cancelled programs: 15400
 After removing NaN values: 5799
 After removing age not in 30-50: 5799
 After removing duplicates: 5799
-Total samples removed: 15969
-Percentage of samples retained: 26.64%
+After removing vocational degree 2: 4577
+Total samples removed: 17191
+Percentage of samples retained: 21.03%

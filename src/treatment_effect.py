@@ -25,7 +25,9 @@ def run_treatment_effect_analysis(df):
     df_shuffled = df.sample(frac=1, random_state=42).reset_index(drop=True)
     split_idx = len(df_shuffled) // 2
     training_df = df_shuffled.iloc[:split_idx]
+    print(f"Training set size: {len(training_df)}")
     prediction_df = df_shuffled.iloc[split_idx:]
+    print(f"Prediction set size: {len(prediction_df)}")
 
     # import parameter json
     with open('src/parameter.json', 'r') as f:

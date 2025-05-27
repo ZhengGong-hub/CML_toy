@@ -107,7 +107,7 @@ def preprocess_data(df):
                     for quarter in range(1, 5)]
         
         # Calculate total quarters of employment
-        df['EMPL_TTL'] = df[empl_cols].sum(axis=1)
+        df['EMPL_TTL'] = (df[empl_cols]==1).sum(axis=1)
         
         # Calculate employment changes
         is_employed = df[empl_cols].eq(1)
@@ -171,7 +171,7 @@ def preprocess_data(df):
     plot_by_nan(df_shallow)
 
     df_shallow = df_shallow.dropna()
-    final_sample_size = len(df_shallow)
+    after_step3_size = len(df_shallow)
 
     # STEP 4: drop all samples that have age not in 30-50 
     df_shallow = df_shallow[df_shallow['AGE'].isin(range(30, 51))]
@@ -180,25 +180,28 @@ def preprocess_data(df):
     # STEP 5: drop duplicates 
     df_shallow = df_shallow.drop_duplicates(subset=['PERS'], keep=False)
     after_step5_size = len(df_shallow)
-    
-    # Save sample size information to a text file
-    with open("output_data/sample_sizes.txt", "w") as f:
-        f.write(f"Initial sample size: {initial_sample_size}\n")
-        f.write(f"After removing employment programs: {after_step1_size}\n")
-        f.write(f"After removing cancelled programs: {after_step2_size}\n")
-        f.write(f"After removing NaN values: {final_sample_size}\n")
-        f.write(f"After removing age not in 30-50: {after_step4_size}\n")
-        f.write(f"After removing duplicates: {after_step5_size}\n")
-        f.write(f"Total samples removed: {initial_sample_size - final_sample_size}\n")
-        f.write(f"Percentage of samples retained: {round((final_sample_size / initial_sample_size) * 100, 2)}%\n")
-    print('Sample size information saved to output_data/sample_sizes.txt')
 
     # STEP 6: 
     # Exclude vocational degree 2 
     #   for calculating propensity scores, and look for common support
     #   (i.e. propensity scores and the distribution of the covariates should not be too different between treatment groups)
     df_shallow = df_shallow.query("VOC_DEG != 2")
-    return df_shallow
+    after_step6_size = len(df_shallow)
+
+    # Save sample size information to a text file
+    with open("output_data/sample_sizes.txt", "w") as f:
+        f.write(f"Initial sample size: {initial_sample_size}\n")
+        f.write(f"After removing employment programs: {after_step1_size}\n")
+        f.write(f"After removing cancelled programs: {after_step2_size}\n")
+        f.write(f"After removing NaN values: {after_step3_size}\n")
+        f.write(f"After removing age not in 30-50: {after_step4_size}\n")
+        f.write(f"After removing duplicates: {after_step5_size}\n")
+        f.write(f"After removing vocational degree 2: {after_step6_size}\n")
+        f.write(f"Total samples removed: {initial_sample_size - after_step6_size}\n")
+        f.write(f"Percentage of samples retained: {round((after_step6_size / initial_sample_size) * 100, 2)}%\n")
+    print('Sample size information saved to output_data/sample_sizes.txt')
+    return df_shallow    
+
 
 def check_distribution(df1, df2, column_names):
     # check the distribution of the two dataframes
