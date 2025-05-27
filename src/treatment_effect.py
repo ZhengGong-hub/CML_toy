@@ -17,39 +17,9 @@ def run_treatment_effect_analysis(df):
         tuple: Results from the analysis and the MCF model
     """
     # Remove output directories if they exist
-    for dir_name in ['output', 'out']:
+    for dir_name in ['output_treatment_effect', 'output_treatment_effect_placebo']:
         if os.path.exists(dir_name):
             shutil.rmtree(dir_name)
-
-    def compute_salary_outcomes(df):
-        """Compute salary outcomes for each period."""
-        for period in range(3, 10):
-            earnings_cols = [f'EARNX{period}_{quarter}' for quarter in range(1, 5)]
-            df[f'SAL_{period}'] = 3 * df[earnings_cols].sum(axis=1)
-        df['SAL_AVG'] = df[[f'SAL_{period}' for period in range(3, 10)]].mean(axis=1)
-        return df
-
-    def compute_employment_outcomes(df):
-        """Compute employment outcomes including total quarters and changes."""
-        # Get all employment columns
-        empl_cols = [f'EMPLX{period}_{quarter}' 
-                    for period in range(3, 10) 
-                    for quarter in range(1, 5)]
-        
-        # Calculate total quarters of employment
-        df['EMPL_TTL'] = df[empl_cols].sum(axis=1)
-        
-        # Calculate employment changes
-        is_employed = df[empl_cols].eq(1)
-        transitions_to_employed = is_employed & ~is_employed.shift(axis=1).fillna(False)
-        transitions_from_employed = ~is_employed & is_employed.shift(axis=1).fillna(False)
-        df['EMPL_CHGE'] = transitions_to_employed.sum(axis=1) + transitions_from_employed.sum(axis=1)
-        
-        return df
-
-    # Compute all outcomes
-    df = compute_salary_outcomes(df)
-    df = compute_employment_outcomes(df)
 
     # Split data into training and prediction sets
     df_shuffled = df.sample(frac=1, random_state=42).reset_index(drop=True)
@@ -63,7 +33,7 @@ def run_treatment_effect_analysis(df):
     
     # Parameters of the ModifiedCausalForest
     VAR_D_NAME = parameter['treatment']  # Name of treatment variable
-    VAR_Y_NAME = ['SAL_AVG'] + ['SAL_'+str(i) for i in range(3,10)] + ['EMPL_TTL'] + ['EMPL_CHGE'] # Name of outcome variables
+    VAR_Y_NAME = parameter['outcome_variables']
     VAR_X_NAME_ORD = parameter['ord_covariates']
     VAR_X_NAME_UNORD = parameter['unord_covariates']
     VAR_Z_NAME_ORD = parameter['ord_Z']
@@ -77,7 +47,8 @@ def run_treatment_effect_analysis(df):
         var_z_name_ord=VAR_Z_NAME_ORD,
         var_z_name_unord=VAR_Z_NAME_UNORD,
         _int_show_plots=False,
-        gen_output_type=2
+        gen_output_type=2,
+        gen_outpath='output_treatment_effect'
         )
 
     matplotlib.use('Agg') # to avoid that plots show up and stop the execution 
@@ -89,7 +60,38 @@ def run_treatment_effect_analysis(df):
     except TypeError:
         pass
     
-    my_report = McfOptPolReport(mcf=mymcf, outputfile='Modified-Causal-Forest_Report')
+    my_report = McfOptPolReport(mcf=mymcf, outputfile='Modified-Causal-Forest_Report', outputpath='output_treatment_effect')
     my_report.report()
     print('End of computations.')
-    return results, mymcf
+
+
+    # palcebo test 
+    # the idea is to check if the treatment effect has effect on past earnings
+    # if it does, then the treatment effect is not due to the fact that the program is effective
+    # we hope that the treatment effect is not due to past earnings
+    mymcf = ModifiedCausalForest(
+        var_d_name=VAR_D_NAME,
+        var_y_name=['EARN_X0'],
+        var_x_name_ord=VAR_X_NAME_ORD,
+        var_x_name_unord=VAR_X_NAME_UNORD,
+        var_z_name_ord=VAR_Z_NAME_ORD,
+        var_z_name_unord=VAR_Z_NAME_UNORD,
+        _int_show_plots=False,
+        gen_output_type=2,
+        gen_outpath='output_treatment_effect_placebo'
+        )
+
+    matplotlib.use('Agg') # to avoid that plots show up and stop the execution 
+    mymcf.train(training_df)
+    results, _ = mymcf.predict(prediction_df) 
+    
+    try:
+        results_with_cluster_id_df, _ = mymcf.analyse(results)
+    except TypeError:
+        pass
+    
+    my_report = McfOptPolReport(mcf=mymcf, outputfile='Modified-Causal-Forest_Report', outputpath='output_treatment_effect_placebo')
+    my_report.report()
+    print('End of computations placebo test.')
+    
+    return 

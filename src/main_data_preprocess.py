@@ -91,7 +91,37 @@ def preprocess_data(df):
     df_shallow['EARNX1'] = df_shallow[['EARNX1_1', 'EARNX1_2', 'EARNX1_3', 'EARNX1_4']].mean(axis=1)
     df_shallow['EARNX2'] = df_shallow[['EARNX2_1', 'EARNX2_2', 'EARNX2_3', 'EARNX2_4']].mean(axis=1)
 
-    # STEP 0b: impute We recognized that we excluded missing observations for the following three variables REG_SER, REG_PRO, and REG_AGRL. However these variables sum up to one and are equal for each region. Instead would you could try, if possible, to just infer the missing values from persons in the same region
+    def compute_salary_outcomes(df):
+        """Compute salary outcomes for each period."""
+        for period in range(3, 10):
+            earnings_cols = [f'EARNX{period}_{quarter}' for quarter in range(1, 5)]
+            df[f'SAL_{period}'] = 3 * df[earnings_cols].sum(axis=1)
+        df['SAL_AVG'] = df[[f'SAL_{period}' for period in range(3, 10)]].mean(axis=1)
+        return df
+
+    def compute_employment_outcomes(df):
+        """Compute employment outcomes including total quarters and changes."""
+        # Get all employment columns
+        empl_cols = [f'EMPLX{period}_{quarter}' 
+                    for period in range(3, 10) 
+                    for quarter in range(1, 5)]
+        
+        # Calculate total quarters of employment
+        df['EMPL_TTL'] = df[empl_cols].sum(axis=1)
+        
+        # Calculate employment changes
+        is_employed = df[empl_cols].eq(1)
+        transitions_to_employed = is_employed & ~is_employed.shift(axis=1).fillna(False)
+        transitions_from_employed = ~is_employed & is_employed.shift(axis=1).fillna(False)
+        df['EMPL_CHGE'] = transitions_to_employed.sum(axis=1) + transitions_from_employed.sum(axis=1)
+        
+        return df
+
+    # Step 0b: Compute all outcomes
+    df_shallow = compute_salary_outcomes(df_shallow)
+    df_shallow = compute_employment_outcomes(df_shallow)
+
+    # STEP 0c: impute We recognized that we excluded missing observations for the following three variables REG_SER, REG_PRO, and REG_AGRL. However these variables sum up to one and are equal for each region. Instead would you could try, if possible, to just infer the missing values from persons in the same region
     # Check if any region has more than one missing value among REG_SER, REG_PRO, and REG_AGRI
     only_one_missing = (df_shallow[['REG_SER', 'REG_PRO', 'REG_AGRI']].isna().sum(axis=1) == 1)
 

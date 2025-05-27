@@ -16,5 +16,9 @@
     "ord_Z": [
         "SEX", "AGE", "SCHOOL", "VOC_DEG", "LMP_CW"
     ],
-    "unord_Z": "NATION"
+    "unord_Z": "NATION",
+    "outcome_variables": [
+        "SAL_AVG", "SAL_3", "SAL_4", "SAL_5", "SAL_6", "SAL_7", "SAL_8", "SAL_9",
+        "EMPL_TTL", "EMPL_CHGE"
+    ]
 }
