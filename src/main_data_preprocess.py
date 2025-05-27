@@ -121,6 +121,11 @@ def preprocess_data(df):
     df_shallow = compute_salary_outcomes(df_shallow)
     df_shallow = compute_employment_outcomes(df_shallow)
 
+    # Compute mean SAL_AVG for each PTYPE group
+    ptype_sal_avg = df_shallow.groupby('PTYPE')['SAL_AVG'].mean()
+    print("\nAverage Salary by Program Type:")
+    print(ptype_sal_avg)
+
     # STEP 0c: impute We recognized that we excluded missing observations for the following three variables REG_SER, REG_PRO, and REG_AGRL. However these variables sum up to one and are equal for each region. Instead would you could try, if possible, to just infer the missing values from persons in the same region
     # Check if any region has more than one missing value among REG_SER, REG_PRO, and REG_AGRI
     only_one_missing = (df_shallow[['REG_SER', 'REG_PRO', 'REG_AGRI']].isna().sum(axis=1) == 1)
