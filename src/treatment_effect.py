@@ -16,7 +16,7 @@ def run_treatment_effect_analysis(df):
     Returns:
         tuple: Results from the analysis and the MCF model
     """
-    # Remove output directories if they exist
+
     for dir_name in ['output_treatment_effect', 'output_treatment_effect_placebo']:
         if os.path.exists(dir_name):
             shutil.rmtree(dir_name)
@@ -71,6 +71,10 @@ def run_treatment_effect_analysis(df):
     # the idea is to check if the treatment effect has effect on past earnings
     # if it does, then the treatment effect is not due to the fact that the program is effective
     # we hope that the treatment effect is not due to past earnings
+    
+    # so we remove past earnings from the model and see if the treatment effect is still significant
+    VAR_X_NAME_ORD.remove('EARN_X0')
+
     mymcf = ModifiedCausalForest(
         var_d_name=VAR_D_NAME,
         var_y_name=['EARN_X0'],

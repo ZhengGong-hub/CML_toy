@@ -54,7 +54,7 @@ d_type:  discrete
 iate_eff:  False
 mp_parallel:  10
 mp_automatic:  True
-sys_share:  0.5060999999999999
+sys_share:  0.2807
 outpath:  output_treatment_effect
 outfiletext:  output_treatment_effect/txtFileWithOutput.txt
 outfilesummary:  output_treatment_effect/txtFileWithOutput_Summary.txt
@@ -776,32 +776,32 @@ Computing random forest based common support
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support before CV
-RAM total: 49152.0 MB,  used: 17323.11 MB, available: 13489.45 MB, free:  71.16 MB
+RAM total: 49152.0 MB,  used: 14660.56 MB, available: 29441.17 MB, free: 11404.19 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 17348.78 MB, available: 13472.25 MB, free:  57.47 MB
+RAM total: 49152.0 MB,  used: 14670.19 MB, available: 29428.64 MB, free: 11390.31 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 17320.62 MB, available: 13499.03 MB, free:  56.44 MB
+RAM total: 49152.0 MB,  used: 14812.06 MB, available: 29295.31 MB, free: 11257.81 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 17302.42 MB, available: 13505.97 MB, free:  66.64 MB
+RAM total: 49152.0 MB,  used: 14872.95 MB, available: 29227.12 MB, free: 11189.61 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 17291.36 MB, available: 13510.7 MB, free:  64.14 MB
+RAM total: 49152.0 MB,  used: 14923.36 MB, available: 29182.44 MB, free: 11144.64 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Training: Common support during CV
-RAM total: 49152.0 MB,  used: 17293.2 MB, available: 13511.08 MB, free:  59.67 MB
+RAM total: 49152.0 MB,  used: 14945.56 MB, available: 29157.94 MB, free: 11120.09 MB
 
 Score based on all features:  0.462 
           score_w/o_x_d  rel_diff_d_%
@@ -1393,262 +1393,262 @@ Local centering is done by cross-validation
 
 ----------------------------------------------------------------------------------------------------
 Local centering: Prior to estimation
-RAM total: 49152.0 MB,  used: 17290.56 MB, available: 13508.72 MB, free:  68.67 MB
+RAM total: 49152.0 MB,  used: 14790.89 MB, available: 29306.45 MB, free: 11073.17 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: After best_regression
-RAM total: 49152.0 MB,  used: 17290.8 MB, available: 13508.84 MB, free:  68.83 MB
+RAM total: 49152.0 MB,  used: 14793.12 MB, available: 29302.72 MB, free: 11069.42 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17314.14 MB, available: 13478.31 MB, free:  58.53 MB
+RAM total: 49152.0 MB,  used: 15047.91 MB, available: 29050.34 MB, free: 10799.75 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17247.81 MB, available: 13532.05 MB, free:   62.5 MB
+RAM total: 49152.0 MB,  used: 15086.47 MB, available: 29021.19 MB, free: 10770.59 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17283.19 MB, available: 13493.72 MB, free:   58.5 MB
+RAM total: 49152.0 MB,  used: 15151.8 MB, available: 28950.0 MB, free: 10699.48 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17267.92 MB, available: 13501.16 MB, free:   62.5 MB
+RAM total: 49152.0 MB,  used: 15352.22 MB, available: 28759.33 MB, free: 10508.83 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17275.27 MB, available: 13492.58 MB, free:  54.69 MB
+RAM total: 49152.0 MB,  used: 15473.25 MB, available: 28633.84 MB, free: 10381.67 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17271.8 MB, available: 13485.84 MB, free:   57.8 MB
+RAM total: 49152.0 MB,  used: 15621.83 MB, available: 28477.23 MB, free: 10225.06 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17275.38 MB, available: 13484.06 MB, free:  62.58 MB
+RAM total: 49152.0 MB,  used: 15679.78 MB, available: 28418.8 MB, free: 10166.53 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17288.64 MB, available: 13461.86 MB, free:  60.77 MB
+RAM total: 49152.0 MB,  used: 15822.25 MB, available: 28283.55 MB, free: 10031.23 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17296.16 MB, available: 13466.36 MB, free:  64.08 MB
+RAM total: 49152.0 MB,  used: 15940.16 MB, available: 28164.34 MB, free: 9912.03 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17281.7 MB, available: 13470.81 MB, free:  58.66 MB
+RAM total: 49152.0 MB,  used: 15941.62 MB, available: 28158.73 MB, free: 9906.44 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17071.23 MB, available: 13340.05 MB, free:  60.28 MB
+RAM total: 49152.0 MB,  used: 17515.52 MB, available: 26581.17 MB, free: 8328.3 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17155.31 MB, available: 13259.58 MB, free:  58.62 MB
+RAM total: 49152.0 MB,  used: 17523.64 MB, available: 26584.16 MB, free: 8329.22 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17089.45 MB, available: 13324.3 MB, free:   62.5 MB
+RAM total: 49152.0 MB,  used: 17592.47 MB, available: 26509.12 MB, free: 8254.17 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17089.45 MB, available: 13324.3 MB, free:   62.5 MB
+RAM total: 49152.0 MB,  used: 17585.5 MB, available: 26519.33 MB, free: 8264.38 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17097.92 MB, available: 13308.22 MB, free:  58.66 MB
+RAM total: 49152.0 MB,  used: 17729.14 MB, available: 26371.16 MB, free: 8116.2 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17091.7 MB, available: 13321.81 MB, free:  62.47 MB
+RAM total: 49152.0 MB,  used: 17808.0 MB, available: 26292.2 MB, free: 8037.25 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17077.7 MB, available: 13335.66 MB, free:  58.34 MB
+RAM total: 49152.0 MB,  used: 17886.48 MB, available: 26219.83 MB, free: 7964.95 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17075.27 MB, available: 13340.36 MB, free:   63.0 MB
+RAM total: 49152.0 MB,  used: 17912.91 MB, available: 26194.62 MB, free: 7949.34 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17084.94 MB, available: 13323.84 MB, free:  56.02 MB
+RAM total: 49152.0 MB,  used: 17973.84 MB, available: 26128.08 MB, free: 7883.19 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17075.16 MB, available: 13329.97 MB, free:  55.78 MB
+RAM total: 49152.0 MB,  used: 17989.31 MB, available: 26119.25 MB, free: 7874.53 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16947.22 MB, available: 13262.41 MB, free:  62.06 MB
+RAM total: 49152.0 MB,  used: 18432.28 MB, available: 25666.0 MB, free: 7420.97 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17016.86 MB, available: 13190.27 MB, free:  62.89 MB
+RAM total: 49152.0 MB,  used: 18452.0 MB, available: 25647.11 MB, free: 7419.31 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17021.94 MB, available: 13171.91 MB, free:  62.55 MB
+RAM total: 49152.0 MB,  used: 18471.52 MB, available: 25634.25 MB, free: 7406.45 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 17029.22 MB, available: 13173.14 MB, free:  64.05 MB
+RAM total: 49152.0 MB,  used: 18518.81 MB, available: 25582.23 MB, free: 7354.41 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16932.52 MB, available: 13227.66 MB, free:  64.06 MB
+RAM total: 49152.0 MB,  used: 18491.19 MB, available: 25617.78 MB, free: 7389.95 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16923.67 MB, available: 13229.31 MB, free:  80.97 MB
+RAM total: 49152.0 MB,  used: 18525.36 MB, available: 25572.86 MB, free: 7345.03 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16919.09 MB, available: 13230.86 MB, free:  64.72 MB
+RAM total: 49152.0 MB,  used: 18534.31 MB, available: 25562.44 MB, free: 7332.97 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16912.41 MB, available: 13228.75 MB, free:  65.19 MB
+RAM total: 49152.0 MB,  used: 18570.41 MB, available: 25535.55 MB, free: 7306.02 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16899.22 MB, available: 13223.53 MB, free:   62.5 MB
+RAM total: 49152.0 MB,  used: 18568.8 MB, available: 25536.16 MB, free: 7306.66 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16901.73 MB, available: 13221.97 MB, free:  68.11 MB
+RAM total: 49152.0 MB,  used: 18573.3 MB, available: 25540.75 MB, free: 7311.16 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16719.09 MB, available: 12983.66 MB, free:  64.83 MB
+RAM total: 49152.0 MB,  used: 19500.16 MB, available: 24602.77 MB, free: 6373.81 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16761.64 MB, available: 12919.19 MB, free:  58.47 MB
+RAM total: 49152.0 MB,  used: 19500.16 MB, available: 24602.77 MB, free: 6373.81 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16786.48 MB, available: 12824.64 MB, free:   58.5 MB
+RAM total: 49152.0 MB,  used: 19501.59 MB, available: 24602.39 MB, free: 6373.08 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16762.95 MB, available: 12819.61 MB, free:  61.94 MB
+RAM total: 49152.0 MB,  used: 19501.59 MB, available: 24602.39 MB, free: 6373.08 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16676.19 MB, available: 12893.53 MB, free:  72.11 MB
+RAM total: 49152.0 MB,  used: 19512.31 MB, available: 24597.08 MB, free: 6367.75 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16627.91 MB, available: 12925.55 MB, free:  63.58 MB
+RAM total: 49152.0 MB,  used: 19507.41 MB, available: 24603.28 MB, free: 6370.62 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16699.08 MB, available: 12857.88 MB, free:  56.02 MB
+RAM total: 49152.0 MB,  used: 19534.58 MB, available: 24579.86 MB, free: 6347.2 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16731.89 MB, available: 12812.64 MB, free:  67.78 MB
+RAM total: 49152.0 MB,  used: 19541.31 MB, available: 24566.66 MB, free: 6333.95 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16661.03 MB, available: 12870.33 MB, free:  61.88 MB
+RAM total: 49152.0 MB,  used: 19560.28 MB, available: 24541.61 MB, free: 6308.88 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16665.55 MB, available: 12856.94 MB, free:   56.0 MB
+RAM total: 49152.0 MB,  used: 19560.55 MB, available: 24540.77 MB, free: 6308.03 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16321.17 MB, available: 12529.52 MB, free:  71.36 MB
+RAM total: 49152.0 MB,  used: 20248.58 MB, available: 23850.59 MB, free: 5617.59 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16355.41 MB, available: 12491.19 MB, free:   59.7 MB
+RAM total: 49152.0 MB,  used: 20251.27 MB, available: 23849.0 MB, free: 5616.0 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16241.69 MB, available: 12605.22 MB, free:  61.59 MB
+RAM total: 49152.0 MB,  used: 20251.33 MB, available: 23852.91 MB, free: 5619.92 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16208.2 MB, available: 12644.5 MB, free: 102.86 MB
+RAM total: 49152.0 MB,  used: 20278.92 MB, available: 23828.56 MB, free: 5595.58 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16207.2 MB, available: 12637.98 MB, free:   77.3 MB
+RAM total: 49152.0 MB,  used: 20267.08 MB, available: 23839.25 MB, free: 5606.16 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16337.94 MB, available: 12412.11 MB, free:  63.64 MB
+RAM total: 49152.0 MB,  used: 20263.83 MB, available: 23837.94 MB, free: 5604.84 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16345.89 MB, available: 12352.72 MB, free:  66.05 MB
+RAM total: 49152.0 MB,  used: 20272.17 MB, available: 23828.91 MB, free: 5595.81 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16279.67 MB, available: 12428.59 MB, free:  80.44 MB
+RAM total: 49152.0 MB,  used: 20273.14 MB, available: 23837.95 MB, free: 5604.83 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16220.12 MB, available: 12491.56 MB, free:  60.66 MB
+RAM total: 49152.0 MB,  used: 20291.7 MB, available: 23802.5 MB, free: 5569.28 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering training: During cross-fitting
-RAM total: 49152.0 MB,  used: 16159.42 MB, available: 12513.61 MB, free:  64.06 MB
+RAM total: 49152.0 MB,  used: 20291.41 MB, available: 23813.31 MB, free: 5580.0 MB
 
 
 ----------------------------------------------------------------------------------------------------
@@ -1768,7 +1768,7 @@ New variable to build trees in RF:  sal_avg_lc
 
 ----------------------------------------------------------------------------------------------------
 Local centering: End of function.
-RAM total: 49152.0 MB,  used: 15862.0 MB, available: 12227.72 MB, free:  57.98 MB
+RAM total: 49152.0 MB,  used: 20304.61 MB, available: 23796.72 MB, free: 5563.41 MB
 
 
 ====================================================================================================
@@ -1881,7 +1881,7 @@ sal_avg_lc_NN0                  444.57581 530.97877      0.84    40.24      5.65
 sal_avg_lc_NN1                 -532.36990 691.50205      0.77    44.14     -5.66
 sal_avg_lc_NN2                 -148.15517 608.04618      0.24    80.75     -1.71
 
-Number of parallel processes: 1
+Number of parallel processes: 10
 
 ----------------------------------------------------------------------------------------------------
 Parameters of estimation to build random forest
@@ -1912,25 +1912,25 @@ Share of merged leaves (w/o all treatments per tree): 24.034%
 Share of leaves w/o all treatments per tree (after merger): 0.214%
 Incomplete leafs will not be considered for weight computation.
 ----------------------------------------------------------------------------------------------------
-Size of forest: 31.87 MB
+Size of forest: 13.87 MB
 ----------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------
 Forest Building: End of forests loop.
-RAM total: 49152.0 MB,  used: 15583.78 MB, available: 12076.81 MB, free: 451.89 MB
+RAM total: 49152.0 MB,  used: 23435.72 MB, available: 20662.5 MB, free:  500.0 MB
 
 
 ----------------------------------------------------------------------------------------------------
-Training executed at: 2025-05-27 13:54:10.734870
+Training executed at: 2025-05-28 13:46:54.489486
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats I:                    0:00:00.101803
-Feature preselection:                            0:00:00.008681
-Common support:                                  0:00:06.216779
-Local centering (recoding of Y):                 0:00:29.807367
-Training the causal forest:                      0:03:42.079040
+Data preparation and stats I:                    0:00:00.108139
+Feature preselection:                            0:00:00.008090
+Common support:                                  0:00:06.481627
+Local centering (recoding of Y):                 0:00:29.970200
+Training the causal forest:                      0:00:38.104268
   ... of which is time for variable importance:  0:00:00
 
-Total time training:                             0:04:18.213670
+Total time training:                             0:01:14.672324
 
 ====================================================================================================
 Modified Causal Forest: Prediction
@@ -1986,7 +1986,7 @@ d_type:  discrete
 iate_eff:  False
 mp_parallel:  10
 mp_automatic:  True
-sys_share:  0.5060999999999999
+sys_share:  0.2807
 outpath:  output_treatment_effect
 outfiletext:  output_treatment_effect/txtFileWithOutput.txt
 outfilesummary:  output_treatment_effect/txtFileWithOutput_Summary.txt
@@ -3032,19 +3032,24 @@ Local centering is done by cross-validation
 
 ----------------------------------------------------------------------------------------------------
 Local centering: Prior to estimation
-RAM total: 49152.0 MB,  used: 15611.81 MB, available: 12100.48 MB, free: 410.59 MB
+RAM total: 49152.0 MB,  used: 23435.72 MB, available: 20662.5 MB, free:  500.0 MB
 
 
 ----------------------------------------------------------------------------------------------------
 Local centering: End of function.
-RAM total: 49152.0 MB,  used: 15954.64 MB, available: 12303.58 MB, free:  62.02 MB
+RAM total: 49152.0 MB,  used: 23373.44 MB, available: 20731.88 MB, free: 506.55 MB
 
-Number of parallel processes: 1
+Number of parallel processes: 10
+
+Operational characteristics of weight estimation I
+Number of workers: 10
+Number of observation chunks:    10
+Average # of observations per chunck: 226.90
  Size of weight matrix:  14.85 MB
 
 ----------------------------------------------------------------------------------------------------
 Prediction: End of weights estimation
-RAM total: 49152.0 MB,  used: 15911.34 MB, available: 12039.12 MB, free: 161.75 MB
+RAM total: 49152.0 MB,  used: 23337.14 MB, available: 20702.69 MB, free: 623.33 MB
 
 
 
@@ -5873,34 +5878,34 @@ sal_avg_lc1_un_lc_pot     2269.0  36842.754559  11949.833694  11029.826101  2766
 sal_avg_lc2_un_lc_pot     2269.0  16170.718078   6644.813324   2041.559267  11322.859586  15531.460913  20241.410264  39204.739774
 
 ----------------------------------------------------------------------------------------------------
-Training executed at: 2025-05-27 13:54:10.734870
+Training executed at: 2025-05-28 13:46:54.489486
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats I:                    0:00:00.101803
-Feature preselection:                            0:00:00.008681
-Common support:                                  0:00:06.216779
-Local centering (recoding of Y):                 0:00:29.807367
-Training the causal forest:                      0:03:42.079040
+Data preparation and stats I:                    0:00:00.108139
+Feature preselection:                            0:00:00.008090
+Common support:                                  0:00:06.481627
+Local centering (recoding of Y):                 0:00:29.970200
+Training the causal forest:                      0:00:38.104268
   ... of which is time for variable importance:  0:00:00
 
-Total time training:                             0:04:18.213670
+Total time training:                             0:01:14.672324
 
 
 ----------------------------------------------------------------------------------------------------
-Prediction executed at: 2025-05-27 13:56:09.809189
+Prediction executed at: 2025-05-28 13:47:39.019139
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats II:                   0:00:00.054241
-Common support:                                  0:00:00.401641
-Local centering (recoding of Y):                 0:00:03.674470
-Weights:                                         0:01:23.853717
-ATEs:                                            0:00:00.510371
-GATEs:                                           0:00:25.634544
+Data preparation and stats II:                   0:00:00.059168
+Common support:                                  0:00:00.401806
+Local centering (recoding of Y):                 0:00:03.498651
+Weights:                                         0:00:12.430350
+ATEs:                                            0:00:00.513141
+GATEs:                                           0:00:26.807401
 BGATEs:                                          0:00:00.000001
 CBGATEs:                                         0:00:00
-QIATEs:                                          0:00:00
-IATEs:                                           0:00:04.944601
-Balancing test:                                  0:00:00.000001
+QIATEs:                                          0:00:00.000001
+IATEs:                                           0:00:00.818418
+Balancing test:                                  0:00:00
 
-Total time prediction:                           0:01:59.073885
+Total time prediction:                           0:00:44.529248
 
 
 ====================================================================================================

@@ -252,20 +252,20 @@ Share of merged leaves (w/o all treatments per tree): 24.034%
 Share of leaves w/o all treatments per tree (after merger): 0.214%
 Incomplete leafs will not be considered for weight computation.
 ----------------------------------------------------------------------------------------------------
-Size of forest: 31.87 MB
+Size of forest: 13.87 MB
 ----------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------
-Training executed at: 2025-05-27 13:54:10.734870
+Training executed at: 2025-05-28 13:46:54.489486
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats I:                    0:00:00.101803
-Feature preselection:                            0:00:00.008681
-Common support:                                  0:00:06.216779
-Local centering (recoding of Y):                 0:00:29.807367
-Training the causal forest:                      0:03:42.079040
+Data preparation and stats I:                    0:00:00.108139
+Feature preselection:                            0:00:00.008090
+Common support:                                  0:00:06.481627
+Local centering (recoding of Y):                 0:00:29.970200
+Training the causal forest:                      0:00:38.104268
   ... of which is time for variable importance:  0:00:00
 
-Total time training:                             0:04:18.213670
+Total time training:                             0:01:14.672324
 
 ====================================================================================================
 Modified Causal Forest: Prediction
@@ -3063,21 +3063,21 @@ sal_avg_lc1_un_lc_pot     2269.0  36842.754559  11949.833694  11029.826101  2766
 sal_avg_lc2_un_lc_pot     2269.0  16170.718078   6644.813324   2041.559267  11322.859586  15531.460913  20241.410264  39204.739774
 
 ----------------------------------------------------------------------------------------------------
-Prediction executed at: 2025-05-27 13:56:09.809189
+Prediction executed at: 2025-05-28 13:47:39.019139
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-Data preparation and stats II:                   0:00:00.054241
-Common support:                                  0:00:00.401641
-Local centering (recoding of Y):                 0:00:03.674470
-Weights:                                         0:01:23.853717
-ATEs:                                            0:00:00.510371
-GATEs:                                           0:00:25.634544
+Data preparation and stats II:                   0:00:00.059168
+Common support:                                  0:00:00.401806
+Local centering (recoding of Y):                 0:00:03.498651
+Weights:                                         0:00:12.430350
+ATEs:                                            0:00:00.513141
+GATEs:                                           0:00:26.807401
 BGATEs:                                          0:00:00.000001
 CBGATEs:                                         0:00:00
-QIATEs:                                          0:00:00
-IATEs:                                           0:00:04.944601
-Balancing test:                                  0:00:00.000001
+QIATEs:                                          0:00:00.000001
+IATEs:                                           0:00:00.818418
+Balancing test:                                  0:00:00
 
-Total time prediction:                           0:01:59.073885
+Total time prediction:                           0:00:44.529248
 
 
 ====================================================================================================
